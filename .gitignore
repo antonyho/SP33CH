@@ -4,6 +4,7 @@
 *.dll
 *.so
 *.dylib
+sp33ch
 
 # Test binary, built with `go test -c`
 *.test

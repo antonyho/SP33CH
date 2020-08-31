@@ -7,14 +7,8 @@ import (
 )
 
 const (
-	// BucketName on Couchbase database
+	// BucketName on Couchbase database.
 	BucketName = "sp33ch"
-)
-
-// Different Couchbase scopes in bucket
-const (
-	ScopeTest       = "test"
-	ScopeProduction = "prod"
 )
 
 // Connect to database by connection string.
@@ -28,14 +22,18 @@ func Connect(str, username, password string) (*gocb.Cluster, error) {
 	)
 }
 
-// Collection with given name, bucket and scope.
+// GetCollection with given name, bucket and scope.
 // The scope can be used as defining the environment,
 // for example: dev, test, prod.
 // It returns the collection database object.
-func Collection(name, bucket, scope string, cluster *gocb.Cluster) (*gocb.Collection, error) {
+func GetCollection(name, bucket string, cluster *gocb.Cluster) (*gocb.Collection, error) {
+	// TODO - Create scope when it does not exist
+	// https://pkg.go.dev/github.com/couchbase/gocb/v2?tab=doc#CollectionManager.CreateScope
+	// TODO - Create collection when it does not exist
+	// https://pkg.go.dev/github.com/couchbase/gocb/v2?tab=doc#CollectionManager.CreateCollection
 	b := cluster.Bucket(bucket)
 	if err := b.WaitUntilReady(5*time.Second, nil); err != nil {
 		return nil, err
 	}
-	return b.Scope(scope).Collection(name), nil
+	return b.Collection(name), nil
 }

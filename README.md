@@ -4,6 +4,8 @@
 
 A liberated discussion system that does not require account registration. No tracing on user activity.
 
+Project Plan Board: [![Project Plan Board](https://i.ibb.co/sFkMpWL/trello-logo-blue.png)](https://trello.com/b/StNWK64E)
+
 ## Vision
 
 Do you feel annoying and doubtful while:

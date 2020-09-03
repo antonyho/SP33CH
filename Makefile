@@ -9,7 +9,8 @@ dep:
 	go mod tidy
 
 dep-update:
-	go mod verify
+	go test ./...
+	go list -m all
 	go mod tidy
 
 dep-download:
